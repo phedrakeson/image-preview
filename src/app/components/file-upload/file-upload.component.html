@@ -1,1 +1,11 @@
-<p>file-upload works!</p>
+<form [formGroup]="uploadForm" (ngSubmit)="submit()">
+  <input type="file" accept="image/*" (change)="showPreview($event)">
+
+  <div class="imagePreview" *ngIf="imageURL && imageURL !== '' ">
+    <img [src]="imageURL" [alt]="uploadForm.value.name" >
+  </div>
+
+  <input formControlName="name" placeholder="Entre um nome">
+
+  <button type="submit">Enviar</button>
+</form>
